@@ -4,9 +4,14 @@ import Note from "./Note";
 import Footer from "./Footer";
 
 function App(){
+    const title = "Title";
+    const content = "Content";
     return <div>
         <Header />
-        <Note />
+        <Note 
+        title={title} 
+        content={content} 
+        />
         <Footer />
     </div>;
 }
