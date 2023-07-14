@@ -1,21 +1,15 @@
 import React , {useState} from 'react';
 
-function Note(props){
-    const [mouse , setMouse] = useState(false);
-    
-    function handleMouseOver(){
-        setMouse(true);
+function Note(props){    
+    function handleClick(event){
+        const index = event.target.id;
+        props.deleteNote(index);
     }
     
-    function handleMouseOut(){
-        setMouse(false);
-    }
-    return <div onMouseOver={handleMouseOver} onMouseOut= {handleMouseOut}
-                className="note"
-                style={{backgroundColor: mouse ? "#f5ba13" : null}}
-            >
+    return <div className="note" index={props.index}>
         <h1>{props.title}</h1>
         <p>{props.content}</p>
+        <button id={props.index} onClick={handleClick}>DELETE</button>
     </div>;
 }
 
