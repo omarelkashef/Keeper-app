@@ -1,9 +1,18 @@
 import React , {useState} from "react";
+import AddIcon from '@mui/icons-material/Add';
+import Fab from '@mui/material/Fab';
+import Zoom from '@mui/material/Zoom';
 
 function CreateArea(props) {
 
   const [titleText , setTitleText] = useState("");
   const [contentText , setContentText] = useState("");
+  const [showFullArea , setshowFullArea] = useState(false);
+
+  function handleMouseClick(){
+    setshowFullArea(true);
+  }
+
   function handleTextChange(event){
     const {name , value} = event.target;
     if(name ==="title"){
@@ -21,12 +30,20 @@ function CreateArea(props) {
   }
   return (
     <div>
-      <form>
+      <form className="create-note">
         <input name="title" placeholder="Title" value={titleText}
-               onChange={handleTextChange} />
-        <textarea name="content" placeholder="Take a note..." rows="3"
-                  value={contentText} onChange={handleTextChange} />
-        <button onClick={handleClick}>Add</button>
+               onChange={handleTextChange} 
+                onClick={handleMouseClick}
+               />
+            {showFullArea && <textarea name="content" placeholder="Take a note..." 
+                rows= "3"
+                value={contentText} onChange={handleTextChange} />
+            }
+        <Zoom in={showFullArea}>
+            <Fab onClick={handleClick}>
+                <AddIcon />
+            </Fab>
+        </Zoom>
       </form>
     </div>
   );

@@ -4,7 +4,7 @@ const currentYear = new Date().getFullYear();
 
 function Footer(){
     return <footer>
-    <p>Copyright © {currentYear}</p>
+    <p>Copyright © {currentYear} Omar Elkashef</p>
     </footer>;
 }
 
